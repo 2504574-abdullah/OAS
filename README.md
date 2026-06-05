@@ -1,6 +1,6 @@
 # Doctor Online Appointment System (OAS)
 
-This repository now contains a clear implementation guide for building the semester project as a **full-stack Doctor Online Appointment System** using:
+This repository contains a clear implementation guide for building the semester project as a **full-stack Doctor Online Appointment System** using:
 - **Backend:** ASP.NET Core Web API (.NET 8 or .NET 6+)
 - **Database:** SQLite + Entity Framework Core
 - **Frontend:** Angular 17 (or Angular 15+)
@@ -165,9 +165,9 @@ Define foreign keys:
 1. Create DTOs (auth, availability, appointment, dashboard)
 2. Define interfaces (`IAuthService`, `IAppointmentService`, etc.)
 3. Implement services with business rules:
-   - Prevent double booking
-   - Only allow valid status transitions
-   - Ensure doctor has availability for selected slot
+   - Prevent double booking (same doctor + hospital + date + time cannot be assigned twice)
+   - Only allow valid status transitions (e.g., `Pending -> Confirmed -> Completed`, and cancellation from `Pending`/`Confirmed` only)
+   - Ensure doctor has an `Available` slot for the selected hospital/date/time before appointment creation or reschedule
 
 ### Step 5: API Layer
 1. Add controllers by module (Auth, Appointments, Doctors, Patients, Admin)
@@ -213,7 +213,7 @@ Define foreign keys:
 ---
 
 ## 9) Local Development Commands (Reference)
-Use the equivalent commands for your exact project names:
+The commands below assume you follow the exact folder names shown in the architecture section. If you choose different names, run the equivalent commands in your own project folders:
 
 ```bash
 # Backend
