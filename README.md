@@ -165,7 +165,7 @@ Define foreign keys:
 1. Create DTOs (auth, availability, appointment, dashboard)
 2. Define interfaces (`IAuthService`, `IAppointmentService`, etc.)
 3. Implement services with business rules:
-   - Prevent double booking (same doctor + hospital + date + time cannot be assigned twice)
+   - Prevent double booking (`doctor + hospital + date + time` must be unique, and a patient should not hold two appointments at the exact same date/time)
    - Only allow valid status transitions (e.g., `Pending -> Confirmed -> Completed`, and cancellation from `Pending`/`Confirmed` only)
    - Ensure doctor has an `Available` slot for the selected hospital/date/time before appointment creation or reschedule
 
